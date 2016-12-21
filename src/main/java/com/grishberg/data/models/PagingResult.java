@@ -1,4 +1,4 @@
-package data.models;
+package com.grishberg.data.models;
 
 import java.util.List;
 

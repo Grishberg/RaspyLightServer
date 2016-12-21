@@ -45,7 +45,7 @@
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>main.Main</mainClass>
+                            <mainClass>com.grishberg.main.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

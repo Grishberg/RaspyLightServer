@@ -1,4 +1,4 @@
-package common;
+package com.grishberg.common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
