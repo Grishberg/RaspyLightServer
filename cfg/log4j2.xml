@@ -13,9 +13,9 @@
                 <pattern>[%d{MM-dd HH:mm:ss,SSS}, %r] %c %m%n</pattern>
             </PatternLayout>
             <Policies>
-                <SizeBasedTriggeringPolicy size="50MB"/>
+                <SizeBasedTriggeringPolicy size="10MB"/>
             </Policies>
-            <DefaultRolloverStrategy max="20"/>
+            <DefaultRolloverStrategy max="10"/>
         </RollingFile>
         <Async name="AsyncFile">
             <AppenderRef ref="RollingFile"/>
