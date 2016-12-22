@@ -1,0 +1,1 @@
+java -jar raspby-light-server.jar & > log.txt
