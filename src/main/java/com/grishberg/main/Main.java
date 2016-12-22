@@ -5,7 +5,11 @@ import com.grishberg.common.ConfigReader;
 import com.grishberg.data.models.User;
 import com.grishberg.services.accounts.AccountService;
 import com.grishberg.services.accounts.AccountServiceImpl;
+import com.grishberg.services.sheduler.FileScheduleStorageImpl;
+import com.grishberg.services.sheduler.ScheduleServiceImpl;
+import com.grishberg.services.sheduler.SchedulerService;
 import com.grishberg.servlets.AuthServlet;
+import com.grishberg.servlets.SchedulerServlet;
 import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.MultiTemplateLoader;
 import freemarker.cache.TemplateLoader;
@@ -21,7 +25,6 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
-import javax.servlet.MultipartConfigElement;
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
@@ -47,8 +50,14 @@ public class Main {
         AccountService accountService = new AccountServiceImpl();
         accountService.addNewUser("admin", "qwe123", "Администратор", User.UserRole.ADMIN);
 
+        SchedulerService schedulerService = new ScheduleServiceImpl(new FileScheduleStorageImpl());
+
         AuthServlet authServlet = new AuthServlet(accountService);
         context.addServlet(new ServletHolder(authServlet), AuthServlet.PAGE_URL);
+
+        SchedulerServlet schedulerServlet = new SchedulerServlet(accountService, schedulerService);
+        context.addServlet(new ServletHolder(schedulerServlet), SchedulerServlet.PAGE_URL);
+
 
 /*
         ServletHolder fileUploadServletHolder = new ServletHolder(addProjectServlet);
