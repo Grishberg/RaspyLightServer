@@ -1,11 +1,10 @@
 package com.grishberg.data.models;
 
-import lombok.Data;
+import lombok.Getter;
 
 /**
  * Created by grishberg on 21.12.16.
  */
-@Data
 public class User {
     public enum UserRole {
         ADMIN,
@@ -13,10 +12,35 @@ public class User {
         GUEST,
     }
 
-    private final String login;
-    private final CharSequence password;
-    private final String name;
-    private final UserRole role;
+    @Getter
+    private String login;
+    @Getter
+    private String password;
+    @Getter
+    private String name;
+    private UserRole roleAsObject;
+    private String role;
+
+    public User() {
+    }
+
+    public User(String login, String password, String name, UserRole roleAsObject) {
+        this.login = login;
+        this.password = password;
+        this.name = name;
+        this.roleAsObject = roleAsObject;
+    }
+
+    public UserRole getRole() {
+        if (roleAsObject == null) {
+            try {
+                return UserRole.valueOf(role);
+            } catch (Exception e) {
+                return UserRole.GUEST;
+            }
+        }
+        return roleAsObject;
+    }
 
     @Override
     public int hashCode() {

@@ -1,6 +1,7 @@
 package com.grishberg.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.grishberg.data.models.User;
 import freemarker.template.Configuration;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,4 +16,5 @@ public class ConfigContext {
     private Configuration templateConfiguration;
     private int port;
     private int lightPin;
+    User[] users;
 }

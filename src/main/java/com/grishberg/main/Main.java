@@ -44,6 +44,10 @@ public class Main {
         log = LogManager.getLogger(Main.class.getName());
 
         ConfigContext configContext = ConfigReader.readConfig();
+        AccountService accountService = new AccountServiceImpl();
+        for (User user : configContext.getUsers()) {
+            accountService.addNewUser(user.getLogin(), user.getPassword(), user.getName(), user.getRole());
+        }
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 
@@ -51,9 +55,6 @@ public class Main {
         //configContext.setTemplateConfiguration(cfg);
 
         LightService lightService = new LightServiceImpl(configContext);
-
-        AccountService accountService = new AccountServiceImpl();
-        accountService.addNewUser("admin", "qwe123", "Администратор", User.UserRole.ADMIN);
 
         SchedulerService schedulerService = new ScheduleServiceImpl(new FileScheduleStorageImpl());
 
