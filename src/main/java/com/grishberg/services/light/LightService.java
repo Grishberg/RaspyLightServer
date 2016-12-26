@@ -4,7 +4,7 @@ package com.grishberg.services.light;
  * Created by grishberg on 22.12.16.
  */
 public interface LightService {
-    boolean checkState();
+    boolean checkState(int port);
 
-    void changeState(boolean enable);
+    void changeState(int port, boolean enable);
 }

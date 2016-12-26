@@ -5,10 +5,13 @@ import com.grishberg.common.ConfigReader;
 import com.grishberg.data.models.User;
 import com.grishberg.services.accounts.AccountService;
 import com.grishberg.services.accounts.AccountServiceImpl;
+import com.grishberg.services.light.LightService;
+import com.grishberg.services.light.LightServiceImpl;
 import com.grishberg.services.sheduler.FileScheduleStorageImpl;
 import com.grishberg.services.sheduler.ScheduleServiceImpl;
 import com.grishberg.services.sheduler.SchedulerService;
 import com.grishberg.servlets.AuthServlet;
+import com.grishberg.servlets.LightServlet;
 import com.grishberg.servlets.SchedulerServlet;
 import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.MultiTemplateLoader;
@@ -47,6 +50,8 @@ public class Main {
         //Configuration cfg = initTemplater(context);
         //configContext.setTemplateConfiguration(cfg);
 
+        LightService lightService = new LightServiceImpl();
+
         AccountService accountService = new AccountServiceImpl();
         accountService.addNewUser("admin", "qwe123", "Администратор", User.UserRole.ADMIN);
 
@@ -57,6 +62,9 @@ public class Main {
 
         SchedulerServlet schedulerServlet = new SchedulerServlet(accountService, schedulerService);
         context.addServlet(new ServletHolder(schedulerServlet), SchedulerServlet.PAGE_URL);
+
+        LightServlet lightServlet = new LightServlet(accountService, lightService);
+        context.addServlet(new ServletHolder(lightServlet), LightServlet.PAGE_URL);
 
 
 /*
