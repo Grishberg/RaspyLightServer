@@ -90,7 +90,7 @@ public class Main {
         server.setHandler(handlers);
         server.start();
         log.info("--------------");
-        log.info("Smart home server v.2.0.0");
+        log.info("Smart home server v.2.0.2");
         log.info(String.format("Starting at http://127.0.0.1:%d", configContext.getPort()));
         log.info("--------------");
         try {
