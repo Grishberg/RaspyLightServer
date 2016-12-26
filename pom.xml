@@ -20,6 +20,7 @@
             !-->
         <org.freemarker.freemarker>2.3.20</org.freemarker.freemarker>
         <primefaces.version>5.1</primefaces.version>
+        <pl4j.version>1.1</pl4j.version>
     </properties>
 
     <build>
@@ -116,6 +117,25 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.6.3</version>
+        </dependency>
+
+        <!-- Pi4j -->
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-parent</artifactId>
+            <version>${pl4j.version}</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-gpio-extension</artifactId>
+            <version>${pl4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-device</artifactId>
+            <version>${pl4j.version}</version>
         </dependency>
     </dependencies>
 </project>

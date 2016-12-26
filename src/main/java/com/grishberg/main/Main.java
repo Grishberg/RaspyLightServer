@@ -92,7 +92,12 @@ public class Main {
         log.info("Smart home server v.2.0.0");
         log.info(String.format("Starting at http://127.0.0.1:%d", configContext.getPort()));
         log.info("--------------");
-        server.join();
+        try {
+            server.join();
+        } finally {
+            log.info("shutdown");
+            lightService.stop();
+        }
     }
 
     /**
