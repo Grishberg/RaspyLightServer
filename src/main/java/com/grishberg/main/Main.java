@@ -50,7 +50,7 @@ public class Main {
         //Configuration cfg = initTemplater(context);
         //configContext.setTemplateConfiguration(cfg);
 
-        LightService lightService = new LightServiceImpl();
+        LightService lightService = new LightServiceImpl(configContext);
 
         AccountService accountService = new AccountServiceImpl();
         accountService.addNewUser("admin", "qwe123", "Администратор", User.UserRole.ADMIN);

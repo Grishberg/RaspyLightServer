@@ -14,4 +14,5 @@ import lombok.Setter;
 public class ConfigContext {
     private Configuration templateConfiguration;
     private int port;
+    private int lightPin;
 }

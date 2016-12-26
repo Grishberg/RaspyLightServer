@@ -1,5 +1,7 @@
 package com.grishberg.services.light;
 
+import com.grishberg.common.ConfigContext;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -8,8 +10,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class LightServiceImpl implements LightService {
     private Map<Integer, Boolean> state;
+    private final ConfigContext configContext;
 
-    public LightServiceImpl() {
+    public LightServiceImpl(ConfigContext configContext) {
+        this.configContext = configContext;
         this.state = new ConcurrentHashMap<>();
         state.put(0, false);
     }
